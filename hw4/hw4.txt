@@ -1,0 +1,66 @@
+SUBMISSION RULES:
+
+Due May 4th, at 11:59 pm.
+
+Submission method: submit a file named "PA4.py". That file should be able to be run with the command "python3 PA4.py", in order to get the same behavior as in the previous homework.
+
+You must create PA4.py by modifying the PA3solVersion2.py file that is attached to this post.
+
+You must follow the instructions below, meaning that you can only put new code into the "..." area indicated in the below discussion.
+
+THE PURPOSE OF THE ATTACHED PA3solVersion2.py FILE:
+
+Attached is a modified version of the PA3solVersion2.py file that I had provided to you before the midterm.
+
+This new version is almost the same as the original. The only difference is that the code for creating the "can't randomly place." error message comes slightly later in the code.
+
+This new version is not better that the original version. But it does help to set up this new homework.
+
+NEW PROGRAMMING ASSIGNMENT DETAILS:
+
+In this new homework, you will be replacing lines 13-23 with one complicated statement. So let us now look at that part of the code: 
+
+>>> PA3=open("PA3solVersion2.py","r").readlines()
+>>> for Ln in range(12,28): print(str(Ln)+": "+PA3[Ln],end="")
+...
+12:         if len(moves) == 0:
+13:             numOptions=0
+14:             for i in range(7):
+15:                 if '  ' in B[i]: numOptions+=1
+16:             if numOptions>0:
+17:                 t=rnd(numOptions)
+18:                 for i in range(7):
+19:                     if '  ' not in B[i]: t+=1; continue
+20:                     if t==i: break
+21:                 else:
+22:                     print("Error")
+23:                 moves=[i+1]
+24:             else:
+25:                 if "announce" in kws:
+26:                     print("The board's full, so",token,"can't randomly place.")
+27:                 return False
+>>>
+ 
+
+In the above, lines 13-22 will be replaced with "try" and "from functools import reduce", and line 24 will be replace with "except:".  Then your homework is to rewrite line 23 (which, after renumbering, means line #15).  In other words:
+
+>>> PA4=open("PA4sol.py","r").readlines()
+>>> for Ln in range(12,20):
+...     if Ln==15: PA4[Ln]=PA4[Ln][:23]+"...]\n"
+...     print(str(Ln)+": "+PA4[Ln],end="")
+...
+12:         if len(moves) == 0:
+13:             try:
+14:                 from functools import reduce
+15:                 moves=[...]
+16:             except:
+17:                 if "announce" in kws:
+18:                     print("The board's full, so",token,"can't randomly place.")
+19:                 return False
+>>>
+
+So your job is to replace the ... on line 15 above. Your new version shoul behave exactly as the previous homework behaved: when placing a peice into a random column, each column that is not already full has an equal chance of randomly being chosen.
+
+Your solution to replace line 15's "..." will be one command (ie, there will be no semicolons), and it will go on one line (ie, there will be no "\n"). (Although I say it is one line, it will be longer than 80 characters, so it will wrap-around on your screen.)
+
+To do this homework, you will need to review lecture 9, and you will need to use "reduce", "map", and "filter".

@@ -1,0 +1,6 @@
+Looking at the deck.png file, you can see the expected output if you run the deck.py file.
+
+Looking at the deck.py file, you can see that it imports card.py
+
+Looking at the cardTemplate.py file, you can see what you need to do to get the card.py file to work.
+
